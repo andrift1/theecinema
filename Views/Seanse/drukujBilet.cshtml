@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "drukujBilet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    function printDiv() {
+
+        var divToPrint = document.getElementById('divtoprints');
+
+        var newWin = window.open('', 'Print-Window');
+
+        newWin.document.open();
+
+        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+
+        newWin.document.close();
+
+        setTimeout(function () { newWin.close(); }, 10);
+
+    }
+</script>
+
+
+<h2>drukujBilet</h2>
+
+<div style="padding: 15px;" class="bg1">
+    <div class="row">
+
+
+        <div class="col-sm-30 col-xs-11 col-centered" id="divtoprints"><img src="~/img/bilety/@ViewBag.Urlbiletu" height="600px" alt="..." class="img-thumbnail"></div>
+        <div class="text-center col-sm-3 col-xs-6 col-centered"><button type="submit" onclick='printDiv();' class="btn btn-bilety">Wydrukuj</button></div>
+        
+
+    </div>
+</div>
+

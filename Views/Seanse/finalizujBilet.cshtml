@@ -1,0 +1,78 @@
+﻿@model cinema.Models.biletModel
+
+@using cinema.Models
+@{
+    ViewBag.Title = "finalizujBilet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>finalizujBilet</h2>
+
+
+        @*
+@using (Html.BeginForm("finalizujBilet", "Seanse", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+        @Html.HiddenFor(a => a.idseansu)
+        foreach (var item in Model.bilety)
+        {
+            @Html.DropDownListFor(m => m.bilety,
+                     new SelectList(Enum.GetValues(typeof(biletModel.biletrodzaj))) 
+                     )
+
+           @Html.HiddenFor(m => m.biletythis);
+        
+        }
+
+    
+ 
+
+    <input type="submit" />
+ }
+            *@
+        
+
+
+
+@using (Html.BeginForm("finalizujBilet", "Seanse", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div style="padding: 15px;" class="bg1">
+    <div class="row">
+
+        <div class="col-sm-2 col-xs-6 col-centered"><img src="~/img/filmy/@HttpContext.Current.Session["Plakat"].ToString()
+" alt="..." class="img-thumbnail"></div>
+        <div class="col-sm-3 text-center col-xs-6 col-centered"><h4>@HttpContext.Current.Session["Film"].ToString()
+</h4></div>
+        <div style="margin-bottom:15px;" class="text-center col-sm-3  col-xs-6 col-centered">Czy chcesz kupić ten bilet?<h2>Normalny @HttpContext.Current.Session["normalnycena"].ToString() zł</h2><h2>Ulgowy @HttpContext.Current.Session["ulgowycena"].ToString() zł</h2></div>
+        <div style="margin-bottom:15px;" class="text-center col-sm-3  col-xs-6 col-centered">
+
+
+
+            @Html.HiddenFor(a => a.idseansu)
+            @foreach (var item in Model.bilety)
+            {
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        @Html.DropDownListFor(m => m.bilety,
+               new SelectList(Enum.GetValues(typeof(biletModel.biletrodzaj))), new { style = "color:black;"}
+               )
+
+                        @Html.HiddenFor(m => m.biletythis)
+
+
+                    </label>
+                </div>
+            }
+
+
+
+
+
+
+
+
+        </div>
+            <div class="text-center col-sm-3 col-xs-6 col-centered"><button type="submit" class="btn btn-bilety">Anuluj</button> <button type="submit" class="btn btn-bilety">Potwierdź</button></div>
+        </div>
+</div>
+} 
+

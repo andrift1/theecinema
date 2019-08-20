@@ -1,0 +1,11 @@
+﻿
+@{
+    Layout = null;
+}
+<ul class="nav nav-pills">
+    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">@Html.ActionLink("Dodaj filmy", "Index", "Admin")</li>
+    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Przywileje" ? "active" : "")">@Html.ActionLink("Dodaj przywileje", "Przywileje", "Admin")</li>
+    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Dodajseans" ? "active" : "")">@Html.ActionLink("Dodaj seans", "Dodajseans", "Admin")</li>
+    @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Edytujfilmy" ? "active" : "")">@Html.ActionLink("Edytuj filmy", "Edytujfilmy", "Admin")</li>*@
+</ul>
+@* <li class="active"><a href="#">Dodaj film</a></li>*@

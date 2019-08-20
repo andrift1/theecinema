@@ -1,0 +1,29 @@
+﻿@model IEnumerable<cinema.Models.SeanseModelView>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Seanse</h2>
+
+@{ 
+    string empttt = "true";
+}
+
+@foreach (var item in Model)
+{
+    empttt = "false";
+    <div style="padding: 15px;" class="bg1">
+        <div class="row">
+        </div>
+        Nazwa filmu: <strong>@item.Tytul</strong> Data: <strong>@item.miesiac<text>.</text>@item.dzien @item.nazwa_dnia</strong> godzina: <strong>@item.godzina</strong> wolne miejsca: <strong><span style="color:green;">@item.wolne_miejsca</span></strong>@if (item.wolne_miejsca > 0)
+        { <a href="@Url.Action("Miejsca", "Seanse", new { id = item.id_seansu })"><button type="submit" class="pull-right btn btn-bilety">Rezerwuj</button></a>}
+
+
+
+    </div>
+}
+@if (empttt == "true")
+{
+    <text>Nie ma seansów dla tego filmu</text>
+}

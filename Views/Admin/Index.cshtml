@@ -1,0 +1,67 @@
+﻿@model cinema.Models.Filmy
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin</h2>
+<div style="padding: 15px;" class="bg1">
+
+    @Html.Partial("_AdminBars")
+    @if (ViewData["Message"] != null)
+    {
+        <div>Film dodany</div>
+    }
+
+    @using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { @class = "", role = "form", enctype = "multipart/form-data" } ))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <div class="form_group">
+            @Html.LabelFor(model => model.Tytul)
+            @Html.TextBoxFor(model => model.Tytul, new { @placeholder = "Tytuł", @class = "form-control" })
+        </div>
+        <div class="form_group">
+            @Html.LabelFor(model => model.Rok_produkcji)
+            @Html.TextBoxFor(model => model.Rok_produkcji, new { @placeholder = "Rok Produkcji", @class = "form-control" })
+        </div>
+        <div class="form_group">
+            @Html.LabelFor(model => model.Gatunek)
+            @Html.TextBoxFor(model => model.Gatunek, new { @placeholder = "Gatunek", @class = "form-control" })
+        </div>
+           
+        <div class="form_group">
+            @Html.LabelFor(model => model.Czas_trwania)
+            @Html.TextBoxFor(model => model.Czas_trwania, new { @placeholder = "Czas trawania", @class = "form-control" })
+        </div>
+           
+        
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Dodaj Zdjęcie</label>
+            <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+           @* @Html.TextBox(model => model.p, new { type = "file" ,@class = "form-control-file" }) *@
+
+        </div>
+
+        <div class="form_group">
+            @Html.LabelFor(model => model.Opis)
+            @Html.TextAreaFor(model => model.Opis, new { @placeholder = "Opis", @class = "form-control",@row ="3" })
+        </div>
+
+        <div class="form_group">
+            @Html.LabelFor(model => model.Cena_ulgowy)
+            @Html.TextBoxFor(model => model.Cena_ulgowy, new { @placeholder = "Cena Ulgowy", @class = "form-control" })
+        </div>
+        <div class="form_group">
+            @Html.LabelFor(model => model.Cena_normalny)
+            @Html.TextBoxFor(model => model.Cena_normalny, new { @placeholder = "Cena Normalny", @class = "form-control" })
+        </div>
+
+
+        <button type="submit" class="btn btn-bilety">Wyślij</button>
+    }
+
+</div>

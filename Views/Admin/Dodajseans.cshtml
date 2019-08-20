@@ -1,0 +1,40 @@
+﻿@model cinema.Models.Seanse
+@{
+    ViewBag.Title = "Dodajseans";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+ $(document).ready(function () {
+     $('#date').datepick();
+
+
+});
+    </script>
+<h2>Dodaj Seans</h2>
+<div style="padding: 15px;" class="bg1">
+    @Html.Partial("_AdminBars")
+    @using (Html.BeginForm("Dodajseans", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+
+        <div class="form_group">
+            @Html.LabelFor(model => model.Id_Filmu)
+            @Html.DropDownListFor(model => model.Id_Filmu, Model.filmylist, new { Style="color:black;"});
+        </div>
+        <div class="form_group">
+            @Html.LabelFor(model => model.Data_i_godzina)
+            @Html.TextBoxFor(model => model.Data_i_godzina, new { @placeholder = "Data", @class = "form-control",@id="date" })
+        </div>
+
+        <div class="form_group">
+            @Html.LabelFor(model => model.godzina)
+            @Html.TextBoxFor(model => model.godzina, new { @placeholder = "12:00", @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-bilety">Wyślij</button>
+    }
+
+
+</div>

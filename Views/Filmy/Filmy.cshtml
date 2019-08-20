@@ -1,0 +1,27 @@
+﻿@model IEnumerable<cinema.Models.Filmy>
+@{
+    ViewBag.Title = "Filmy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int index = 1;
+}
+    @foreach (var item in Model)
+    {
+        @:<div class="bg1">
+
+            @:<div class="media-body">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img style="width: 155px;" class="media-object" src="~/img/filmy/@(item.Plakat)" alt="...">
+                    </a>
+                </div>
+                @:<div class="media-body">
+                   @: <h4 class="media-heading">
+                        @item.Tytul <text>(</text>@item.Rok_produkcji<text>)</text> <span class="badge">Gatunek: @item.Gatunek</span> <span class="badge">Czas Trwania: @item.Czas_trwania min</span><span class="badge">Cena Ulgowy: @item.Cena_ulgowy zł Cena Normalny: @item.Cena_normalny zł</span><a href="@Url.Action("Index","Seanse",new { id=item.Id_Filmu})"><button type="submit" class="pull-right btn btn-bilety">Zobacz seanse</button></a>@:</h5>
+                        <div class="tekstfilmu">
+                            @item.Opis
+                        </div>
+                @:</div>
+            @:</div>
+        @:</div>
+    }
+

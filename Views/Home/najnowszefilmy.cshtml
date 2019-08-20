@@ -1,0 +1,14 @@
+﻿@model  cinema.Models.NajnowszeFimyView
+<div class="row">
+
+
+    <div class="col-sm-12">
+        <h4>@ViewBag.nazwa</h4>
+    </div>
+   
+        @foreach (var item in Model.Films)
+        {
+
+            <div class="col-sm-2 col-xs-6"><a href=" @Url.Action("Film", "Filmy",new { id= item.Id_Filmu,nazwa=@item.Tytul.Replace(" ","-").Replace(":","-")})" data-toggle="tooltip" data-placement="bottom" title="@item.Tytul (@item.Rok_produkcji)"><img src="~/img/filmy/@item.Plakat" alt="..." class="img-thumbnail"></a></div>
+    }
+</div>

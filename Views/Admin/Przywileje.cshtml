@@ -1,0 +1,29 @@
+﻿@model cinema.Models.Przywileje
+@{
+    ViewBag.Title = "Przywileje";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Przywileje</h2>
+
+<div style="padding: 15px;" class="bg1">
+
+    @Html.Partial("_AdminBars")
+    @if (ViewData["Message"] != null)
+    {
+        <div>Admin Dodany</div>
+    }
+@using (Html.BeginForm("Przywileje", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+   
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    
+    <div class="form_group">
+        @Html.LabelFor(model => model.email)
+        @Html.TextBoxFor(model => model.email,new{@placeholder="email",@class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-bilety">Wyślij</button>
+}
+
+</div>

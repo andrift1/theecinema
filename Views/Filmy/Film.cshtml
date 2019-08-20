@@ -1,0 +1,24 @@
+﻿@model cinema.Models.Filmy
+
+@{
+    ViewBag.Title = "Film";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg1">
+    <div class="media">
+        <div class="media-left media-middle">
+            <a href="#">
+                <img style="width: 155px;" class="media-object" src="~/img/filmy/@Model.Plakat" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+                @Model.Tytul (@Model.Rok_produkcji) <span class="badge">Gatunek: @Model.Gatunek</span> <span class="badge">Czas Trwania: @Model.Czas_trwania min</span><span class="badge">Cena Ulgowy: @Model.Cena_ulgowy zł Cena Normalny: @Model.Cena_normalny zł</span><a href="@Url.Action("Index","Seanse",new { id=Model.Id_Filmu})"><button type="submit" class="pull-right btn btn-bilety">Zobacz seanse</button></a></h5>
+                <div class="tekstfilmu">
+                    @Model.Opis
+                </div>
+        </div>
+    </div>
+</div>
+
